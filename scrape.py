@@ -79,6 +79,15 @@ class driver:
     def top_3_negative(self):
         negative = self.df.sort_values(by=["polarity"], ascending=True).head(3)
         return [x for x in negative["tweets"]]
+
+    def generate_wordcloud(self):
+        consolidated = " ".join(word for word in self.df["cleaned_tweets"])
+
+        word_cloud = WordCloud(
+            width=400, height=200, random_state=20, max_font_size=120
+        ).generate(consolidated)
+
+        return word_cloud
     
     
     
