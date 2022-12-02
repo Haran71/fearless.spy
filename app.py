@@ -13,9 +13,15 @@ app = Flask(__name__,
 def start_up():
     return render_template("index.html")
 
-@app.post('/')
+@app.post('/loader')
+def loader():
+    term = request.form["search_box"]
+    return render_template("loader.html",term=term)
+
+@app.get('/driver')
 def main_driver():
-    Driver = driver(request.form["search_box"])
+    data = str(request.args.to_dict(flat=False)['data'][0])
+    Driver = driver(data)
 
     # Scraping the data
     Driver.scrape()
