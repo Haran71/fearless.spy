@@ -1,0 +1,25 @@
+#header {
+    padding: 2%;
+    /* margin: 5%; */
+} 
+
+#desc {
+    padding: 2%;
+}
+
+#ptweets {
+    padding: 2%; 
+}
+
+#ntweets {
+    padding: 2%; 
+}
+
+#wordcloud,#footer {
+    margin-top: 50px;
+}
+
+
+p {
+    font-size: 2rem;
+}

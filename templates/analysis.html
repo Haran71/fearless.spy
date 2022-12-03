@@ -4,9 +4,157 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/analysis.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <title>Fearless Spy Report</title>
+
+    <style>
+        body{
+            background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+            padding:0;
+            margin:0;
+        }
+        main {
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+        #eyes, #eyes img {
+            position: absolute;
+        }
+    </style>
 </head>
 <body>
+    <!-- <main> 
+
+        <img id="anchor" src="../static/images/morty.png">
+        <div id="eyes">
+            <img class="eye" src="../static/images/eye.png" style="top: -49px; left: -61px;">
+            <img class="eye" src="../static/images/eye.png" style="top: -44px; left: -2px;">
+        </div>
+    </main>  -->
+    <section id="header" style="display: none;">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="card bg-dark text-white w-50 text-center" style="border-radius: 1rem;">
+                <h1></h1>
+            </div>
+        </div>
+    </section>
+    <section id="desc" style="display: none;">
+        <div class="row d-flex h-100">
+            <div class="col-md-6">
+                <div class="card bg-dark text-white p-5 h-100" style="border-radius: 1rem;">
+                    <p><u>Search Term:</u> {{term}}</p><br>
+                    <p><u>Tweets Scraped:</u> 200</p><br>
+                    <p><u>Time Taken:</u> {{time}} seconds</p>
+            </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card bg-dark text-white p-5 h-100" style="border-radius: 1rem;">
+                    <p>Out of the the 200 tweets scraped, <p style="color: red;">{{negative}}</p> tweets were determined to be negative, 
+                    <p style="color: rgb(71, 240, 71);">{{positive}}</p> were determined to be positive and the remaining <p style="color: yellow;">{{neutral}}</p> tweets were detrmined to be neutral
+                    </p>
+            </div>
+            </div>
+
+            
+        </div>
+    </section>
+    <section id="ptweets" style="display: none;">
+        <div class="row d-flex justify-content-center align-items-center h-100 p-5">
+            <div class="card bg-dark text-white w-50 text-center" style="border-radius: 1rem;">
+                <h2>Top Positive Tweets</h2>
+            </div>
+        </div>
+        <div id="carouselP" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{pt[0]}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{pt[1]}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{pt[2]}}</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselP" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselP" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </section>
+    <section id="ntweets" style="display: none;">
+        <div class="row d-flex justify-content-center align-items-center h-100 p-5">
+            <div class="card bg-dark text-white w-50 text-center" style="border-radius: 1rem;">
+                <h2>Top Negative Tweets</h2>
+            </div>
+        </div>
+        <div id="carouselN" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{nt[0]}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{nt[1]}}</p>
+                    </div>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="card bg-light text-dark w-50 text-center" style="border-radius: 1rem;">
+                        <p>{{nt[2]}}</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselN" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselN" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </section>
+    <section id="wordcloud" style="display: none;">
+
+        <div class="row d-flex justify-content-center align-items-center h-100 p-5">
+            <img src="images/wordcloud.png" alt="wordcloud">
+        </div>
+    </section>
+    <section id="footer" style="display: none;">
+        <div class="row d-flex justify-content-center align-items-center h-100 p-5">
+            &copy Haran Raajesh 2022 
+        </div>
+    </section>
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="scripts/analysis.js"></script>
 </body>
 </html>

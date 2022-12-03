@@ -71,6 +71,9 @@ class driver:
         self.df["polarity"] = self.df["cleaned_tweets"].apply(self.calcPolarity)
         self.df["subjectivity"] = self.df["cleaned_tweets"].apply(self.calcSubjectivity)
         self.df["segmentation"] = self.df["polarity"].apply(self.segmentation)
+
+    def value_counts(self):
+        return self.df["segmentation"].value_counts(ascending=True)
     
     def top_3_positive(self):
         positive = self.df.sort_values(by=["polarity"], ascending=False).head(3)
