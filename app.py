@@ -2,6 +2,7 @@ from scrape import driver
 from flask import Flask
 from flask import render_template
 from flask import request
+from flask import redirect
 import time
 
 app = Flask(__name__,
@@ -54,7 +55,9 @@ def main_driver():
                             )
 
 
-    
+@app.post('/driver')
+def start_redirect():
+    return redirect("/")
 
 if __name__ == "__main__":
     app.run(debug=True)

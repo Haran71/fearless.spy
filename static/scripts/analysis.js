@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded',(e) => {
                 $('#ntweets').fadeIn(3000)
                 $('#wordcloud').fadeIn(3000)
                 $('#footer').fadeIn(3000)
+                $('#goAgain').fadeIn(3000)
               }, 200);
         }
     }
