@@ -11,6 +11,12 @@ Fearless Spy is a web app that scrapes tweets from twitter and using sentimental
 ## Demo
 
 
+
+https://user-images.githubusercontent.com/97172421/205478435-63bd8f0b-095c-4dbd-a6f5-4565a5ed698d.mp4
+
+
+
+
 ## Miscellanous
 
 The story of the 2 jupyter notebooks. So initially I tried to use the twitter API (tweepy library) to scrape tweets, however the free tier only allowed tweets from the past 7 days to be scraped, and even though that might have been enough, I wanted more flexibility. Also the twitter API Docs are so frustrating, and poorly writter. So, out of frustration, I used the selenium web driver to manually login to twitter, and scrape tweets. So I literally went: 
