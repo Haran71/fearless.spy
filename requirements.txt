@@ -1,0 +1,10 @@
+flask
+os
+pandas
+nltk
+re
+datetime
+textblob
+wordcloud
+matplotlib
+time
