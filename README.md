@@ -15,7 +15,9 @@ Fearless Spy is a web app that scrapes tweets from twitter and using sentimental
 https://user-images.githubusercontent.com/97172421/205478435-63bd8f0b-095c-4dbd-a6f5-4565a5ed698d.mp4
 
 
+## Update
 
+Attempts to train a better ML model are ongoing. The first attempt was building an LSTM Neural Network using PyTorch. The model was trained using a dataset which can be found [here](https://github.com/ajayshewale/Sentiment-Analysis-of-Text-Data-Tweets-). The model did not achieve the desired accuracy and hence at the moment the textblob library continues to be used for the NLP requirements of the project.
 
 ## Miscellanous
 
